@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Displet Pop
-Plugin URI: http://thebyob.com/displet-pop
+Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window after a 30-seconds on a visitor's 5th pageview, prompting visitors to complete a contact form. Number of seconds and pageviews are customizable options. Uses cookies to avoid over-pestering.
 Version: 1.0
 Author: Displet

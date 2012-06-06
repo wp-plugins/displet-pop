@@ -1,5 +1,5 @@
 === Displet Pop ===
-Contributors: displet
+Contributors: displetdev
 Tags: pop-up, light window, pop up, delay, email, form
 Requires at least: 2.0.2
 
