@@ -40,3 +40,6 @@ body.displetpop{
 	background-color: #fff;
 }
 
+#displetpop .clear{
+	clear: both;
+}
