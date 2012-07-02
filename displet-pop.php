@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window after a 30-seconds on a visitor's 5th pageview, prompting visitors to complete a contact form. Number of seconds and pageviews are customizable options. Uses cookies to avoid over-pestering.
-Version: 1.0
+Version: 1.1
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -28,8 +28,8 @@ function displetpop_scripts() {
 	wp_enqueue_script('jquery');
     wp_register_script( 'jquery-cookie', plugins_url('jquery.cookie.js', __FILE__) );
     wp_enqueue_script( 'jquery-cookie', array('jquery') );
-    wp_register_style( 'displetpop-style', plugins_url('style.css', __FILE__) );
-    wp_enqueue_style( 'displetpop-style' );
+    wp_register_style( 'style', plugins_url('style.css', __FILE__) );
+    wp_enqueue_style( 'style' );
 }    
 add_action('wp_enqueue_scripts', 'displetpop_scripts');
 
@@ -42,6 +42,9 @@ function displetpop_settings() {
 		'displetpop_subtitle',
 		'displetpop_description',
 		'displetpop_privacy',
+		'displetpop_testmode',
+		'displetpop_usecustomstyles',
+		'displetpop_customstyles',
 		);
 	foreach ( $setting_vars as $setting_var ){
 		register_setting( 'displetpop_set', $setting_var );
@@ -90,6 +93,7 @@ function displetpop_options() {
 	<legend>Settings:</legend>
 		<div class="entry">Show popup after <input name="displetpop_seconds" type="text" id="displetpop_seconds" size="1" value="<?php echo get_option('displetpop_seconds'); ?>"/> seconds after visiting <input name="displetpop_pageviews" type="text" id="displetpop_pageviews" size="1" value="<?php echo get_option('displetpop_pageviews'); ?>"/> pages</div>
 		<div class="entry">Advanced users: Set cookie to expire after <input name="displetpop_expiration" type="text" id="displetpop_expiration" size="1" value="<?php echo get_option('displetpop_expiration'); ?>"/> days</div>
+		<div class="entry">Test mode: <input type="checkbox" id="displetpop_testmode" name="displetpop_testmode" value="1" <?php checked( '1', get_option( 'displetpop_testmode' ) ); ?> /> <span>If checked, the popup will show on EVERY pageview and IGNORE cookies.</span></div>
 	</table>
 </fieldset>
 <fieldset>
@@ -99,6 +103,13 @@ function displetpop_options() {
 		<div class="entry"><div class="fieldleft">Sub-title</div><textarea name="displetpop_subtitle" type="text" id="displetpop_subtitle"><?php echo get_option('displetpop_subtitle'); ?></textarea><div class="marleft"><span>Below the title</span></div></div>
 		<div class="entry"><div class="fieldleft">Description</div><textarea name="displetpop_description" type="text" id="displetpop_description"><?php echo get_option('displetpop_description'); ?></textarea><div class="marleft"><span>Right above the form</span></div></div>
 		<div class="entry"><div class="fieldleft">Privacy Info</div><textarea name="displetpop_privacy" type="text" id="displetpop_privacy"><?php echo get_option('displetpop_privacy'); ?></textarea><div class="marleft"><span>At the very bottom</span></div></div>
+	</table>
+</fieldset>
+<fieldset>
+	<legend>Styles:</legend>
+	<table class="form-table">
+		<div class="entry"><div class="fieldleft">Use Custom Stylesheet</div><input type="checkbox" id="displetpop_usecustomstyles" name="displetpop_usecustomstyles" value="1" <?php checked( '1', get_option( 'displetpop_usecustomstyles' ) ); ?> /> <span>If checked, the plugin will use the custom styles entered below in addition to your theme defaults to render the popup</span></div>
+		<div class="entry"><div class="fieldleft">Custom Stylesheet</div><textarea name="displetpop_customstyles" type="text" id="displetpop_customstyles"><?php echo get_option('displetpop_customstyles'); ?></textarea></div>
 	</table>
 </fieldset>
 <p class="submit">
@@ -124,7 +135,160 @@ add_action('widgets_init', 'displetpop_sidebar');
 
 function displetpop_markup() { ?>
 
-	<?php ?>
+	<?php if (get_option('displetpop_usecustomstyles')) {echo '<style>' . get_option('displetpop_customstyles') . '</style>';} else{
+		$imagesdir = plugins_url() . '/displet-pop/images'
+		?>
+		<style>
+		#displetpop .popup{
+			width: 488px;
+			padding: 20px 20px 13px 20px;
+			border: 1px solid #ada99c;
+			background-color:#fff;
+		}
+		#displetpop .tit{
+			display: inline-block;
+			margin: 0px auto;
+			height: 40px;
+			padding-left: 16px;
+			background: url('<?php echo $imagesdir; ?>/titleft.png') 0px 0px no-repeat;
+			margin-bottom: 11px;
+		}
+		#displetpop .tit .inner{
+			height: 40px;
+			padding-right: 16px;
+			background: url('<?php echo $imagesdir; ?>/titright.png') right 0px no-repeat;
+		}
+		#displetpop .tit .inner2{
+			height: 40px;
+			line-height: 40px;
+			padding: 0px 8px;
+			background: url('<?php echo $imagesdir; ?>/titback.png') 0px 0px repeat-x;
+			font-size: 18px;
+			color: #fff;
+			text-transform: uppercase;
+			font-family: 'Oswald', sans-serif;
+			text-shadow: 1px -1px 2px #333;
+		}
+		#displetpop .subtit{
+			font-size: 15px;
+			line-height: 23px;
+			color: #4f3e30;
+			font-family: 'Georgia', serif;
+			text-transform: uppercase;
+			text-align: center;
+			margin-bottom: 11px;
+		}
+		#displetpop .subtit div{
+			font-weight: bold;
+		}
+		#displetpop .form{
+			border: 1px solid #b5b0a3;
+			background-color: #e9e2d2;
+			padding: 14px 15px 5px 15px;
+			margin-bottom: 7px;
+			overflow:auto;
+		}
+		#displetpop .description{
+			font-size: 11px;
+			line-height: 11px;
+			font-family: 'Arial', sans-serif;
+			color: #4f3e30;
+			margin-bottom: 15px;
+		}
+		#displetpop input, #displetpop select, #displetpop textarea{
+			border: 1px solid #b5b0a3;
+			background-color: #fff;
+			font-size: 11px;
+			font-weight: bold;
+			font-family: 'Arial', sans-serif;
+			color: #695e55;
+			float: left;
+			margin: 0 10px 10px 0;
+		}
+		#displetpop ::-webkit-input-placeholder {
+		    color: #695e55;
+		}
+		#displetpop :-moz-placeholder {
+		    color: #695e55;
+		}
+		#displetpop input{
+			height: 28px;
+			line-height: 28px;
+			padding: 0px 6px;
+			width: 174px;
+		}
+		#displetpop select{
+			height: 30px;
+			line-height: 26px;
+			width: 173px;
+			padding: 1px 1px 1px 6px;
+		}
+		#displetpop textarea{
+			line-height: 18px;
+			padding: 5px 6px;
+		}
+		#displetpop input[type="submit"]{
+			border:0;
+			background-color: #695240;
+			padding: 0px 7px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			font-size: 11px;
+			color: #fff;
+			text-transform: uppercase;
+			font-family: 'Oswald', 'Tahoma', sans-serif;
+			margin-right: 0px;
+			width: inherit;
+		}
+		#displetpop .gform_wrapper ul li.gfield, #displetpop .gform_wrapper .gform_footer{
+			clear: none;
+		}
+		#displetpop .gform_wrapper .gform_footer, #displetpop .gform_wrapper{
+			margin:0;
+			padding:0;
+		}
+		#displetpop .gform_wrapper{
+			max-width:100%;
+		}
+		#displetpop .privacy{
+			text-align: center;
+			font-size: 11px;
+			line-height: 18px;
+			font-family: 'Arial', sans-serif;
+			color: #695e55;
+			margin-top: 12px;
+		}
+		#displetpop .privacy span{
+			color: #ee2f2b;
+			margin-right: 2px;
+		}
+		#displetpop a{
+			color: #68462b;
+			text-decoration: underline;
+		}
+		#displetpop a:hover{
+			text-decoration: none;
+		}
+		#displetpop .close{
+			position: absolute;
+			right: 6px;
+			bottom: 6px;
+			font-size: 10px;
+			line-height: 10px;
+			font-family: 'Arial', sans-serif;
+		}
+		#displetpop .close a{
+			color: #695e55;
+			text-decoration: none;
+			padding-left: 10px;
+			background: url('<?php echo $imagesdir; ?>/close.png') 0px 3px no-repeat;
+		}
+		#displetpop .close a:hover{
+			text-decoration: underline;
+		}
+		</style>
+	<?php } ?>
 	<div id="displetpop" style="display:none;">
 		<div class="shadow"></div>
 		<table class="inner">
@@ -197,7 +361,7 @@ jQuery(document).ready(function($){
 		$('body').addClass('displetpop');
 		$.cookie('recentpop','yes', {expires:<?php echo get_option('displetpop_expiration'); ?>}, {path:'/'});
 	}
-	if ($.cookie('recentpop') != 'yes' && '<?php echo $_SESSION["views"]; ?>' == '<?php echo get_option("displetpop_pageviews"); ?>'){
+	if (($.cookie('recentpop') != 'yes' && '<?php echo $_SESSION["views"]; ?>' == '<?php echo get_option("displetpop_pageviews"); ?>') || '<?php echo get_option("displetpop_testmode"); ?>' == '1'){
 		window.setTimeout(displetPop, <?php echo 1000*get_option('displetpop_seconds'); ?>);	
 	}
 	

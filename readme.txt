@@ -26,10 +26,22 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.1 =
+* Added test mode and custom CSS options.
+
+= 1.0 =
+* Released.
+
 = 0.5 =
 * Created.
 
 == Upgrade Notice ==
+
+= 1.1 =
+* Added test mode and custom CSS options.
+
+= 1.0 =
+* Released.
 
 = 0.5 =
 Created.
