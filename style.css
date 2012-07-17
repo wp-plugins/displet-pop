@@ -43,3 +43,8 @@ body.displetpop{
 #displetpop .clear{
 	clear: both;
 }
+
+#displetpop .powered{
+	display: none;
+	height: 0px;
+}

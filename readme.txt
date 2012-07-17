@@ -1,13 +1,13 @@
 === Displet Pop ===
 Contributors: displetdev
-Tags: pop-up, light window, pop up, delay, email, form
+Tags: pop-up, light window, pop up, popup, delay, email, form, contact form, gravity forms, gravity, gravityforms, real estate
 Requires at least: 2.0.2
 
 Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
 
 == Description ==
 
-Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
+Displet Pop shows a pop-up window on a specified page load after a specified time elapses, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering. Integrates with Gravity Forms and other form builders.
 
 == Installation ==
 
@@ -26,6 +26,9 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.2 =
+* New default styles added & URL path option.
+
 = 1.1 =
 * Added test mode and custom CSS options.
 
@@ -36,6 +39,9 @@ Most likely to encourage newsletter registration.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2 =
+* New default styles added & URL path option.
 
 = 1.1 =
 * Added test mode and custom CSS options.
