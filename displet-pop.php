@@ -74,7 +74,7 @@ function displetpop_menu() {
 		'administrator',
 		'displettools-uid-slug',
 		'',
-		plugins_url('displetreader-wordpress-plugin/images/displet.png'),
+		plugins_url('displet-pop/images/displet.png'),
 		76
 		);
 	add_submenu_page('displettools-uid-slug',
