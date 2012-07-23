@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2
+Version: 1.2.1
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -43,6 +43,7 @@ function displetpop_settings() {
 		'displetpop_description',
 		'displetpop_privacy',
 		'displetpop_testmode',
+		'displetpop_disablemode',
 		'displetpop_style',
 		'displetpop_customstyles',
 		'displetpop_path',
@@ -113,7 +114,8 @@ function displetpop_options() {
 		<div class="entry">Show popup after <input name="displetpop_seconds" type="text" id="displetpop_seconds" size="1" value="<?php echo get_option('displetpop_seconds'); ?>"/> second(s) after visiting at least <input name="displetpop_pageviews" type="text" id="displetpop_pageviews" size="1" value="<?php echo get_option('displetpop_pageviews'); ?>"/> pages <span>Will only show once until cookie expires</span></div>
 		<div class="entry">Show popup only on pages containing URL path: <input name="displetpop_path" type="text" id="displetpop_path" size="5" value="<?php echo get_option('displetpop_path'); ?>"/> <span>Leave blank to apply to all pages & posts</span></div>
 		<div class="entry">Advanced users: Set cookie to expire after <input name="displetpop_expiration" type="text" id="displetpop_expiration" size="1" value="<?php echo get_option('displetpop_expiration'); ?>"/> days <span>1 day minimum</span></div>
-		<div class="entry">Test mode: <input type="checkbox" id="displetpop_testmode" name="displetpop_testmode" value="1" <?php checked( '1', get_option( 'displetpop_testmode' ) ); ?> /> <span>If checked, the popup will show on <b>every pageview</b> and <b>ignore cookies</b>. URL path settings will still apply.</span></div>
+		<div class="entry">Test mode: <input type="checkbox" id="displetpop_testmode" name="displetpop_testmode" value="1" <?php checked( '1', get_option( 'displetpop_testmode' ) ); ?> /> <span>If checked, the popup will show on <b>every pageview</b> and <b>ignore cookies</b>. URL path settings will still apply. Test mode only applies to users logged in as administrators.</span></div>
+		<div class="entry">Disable mode: <input type="checkbox" id="displetpop_disablemode" name="displetpop_disablemode" value="1" <?php checked( '1', get_option( 'displetpop_disablemode' ) ); ?> /> <span>If checked, the popup will be disabled and will not be visible to anyone - no matter what. Disable mode trumps test mode.</span></div>
 	</table>
 </fieldset>
 <fieldset>
@@ -485,10 +487,10 @@ function displetpop_markup() {
 			#displetpop .powered{
 				display: block;
 				position: absolute;
-				bottom: -31px;
+				bottom: -18px;
 				left: 0px;
 				width: 600px;
-				height: 13px;
+				height: 0px;
 				line-height: 12px;
 				text-align: center;
 				font-size: 10px;
@@ -500,9 +502,13 @@ function displetpop_markup() {
 				margin-left: 5px;
 				display: inline-block;
 				height: 13px;
+				line-height: 13px;
+				text-indent: -9999px;
 				width: 60px;
 				background: url('<?php echo $imagesdir; ?>/displet.png') 0px 0px no-repeat;
-				text-indent: -9999px;
+			}
+			#displetpop .displet a{
+				display: block;
 			}
 			</style>
 		<?php }
@@ -657,10 +663,10 @@ function displetpop_markup() {
 			#displetpop .powered{
 				display: block;
 				position: absolute;
-				bottom: -31px;
+				bottom: -18px;
 				left: 0px;
 				width: 600px;
-				height: 13px;
+				height: 0px;
 				line-height: 12px;
 				text-align: center;
 				font-size: 10px;
@@ -672,9 +678,13 @@ function displetpop_markup() {
 				margin-left: 5px;
 				display: inline-block;
 				height: 13px;
+				line-height: 13px;
+				text-indent: -9999px;
 				width: 60px;
 				background: url('<?php echo $imagesdir; ?>/displet.png') 0px 0px no-repeat;
-				text-indent: -9999px;
+			}
+			#displetpop .displet a{
+				display: block;
 			}
 			</style>
 		<?php }
@@ -829,10 +839,10 @@ function displetpop_markup() {
 			#displetpop .powered{
 				display: block;
 				position: absolute;
-				bottom: -31px;
+				bottom: -18px;
 				left: 0px;
 				width: 600px;
-				height: 13px;
+				height: 0px;
 				line-height: 12px;
 				text-align: center;
 				font-size: 10px;
@@ -844,9 +854,13 @@ function displetpop_markup() {
 				margin-left: 5px;
 				display: inline-block;
 				height: 13px;
+				line-height: 13px;
+				text-indent: -9999px;
 				width: 60px;
 				background: url('<?php echo $imagesdir; ?>/displet.png') 0px 0px no-repeat;
-				text-indent: -9999px;
+			}
+			#displetpop .displet a{
+				display: block;
 			}
 			</style>
 		<?php }
@@ -1001,10 +1015,10 @@ function displetpop_markup() {
 			#displetpop .powered{
 				display: block;
 				position: absolute;
-				bottom: -31px;
+				bottom: -18px;
 				left: 0px;
 				width: 600px;
-				height: 13px;
+				height: 0px;
 				line-height: 12px;
 				text-align: center;
 				font-size: 10px;
@@ -1016,9 +1030,13 @@ function displetpop_markup() {
 				margin-left: 5px;
 				display: inline-block;
 				height: 13px;
+				line-height: 13px;
+				text-indent: -9999px;
 				width: 60px;
 				background: url('<?php echo $imagesdir; ?>/displet.png') 0px 0px no-repeat;
-				text-indent: -9999px;
+			}
+			#displetpop .displet a{
+				display: block;
 			}
 			</style>
 		<?php }
@@ -1174,10 +1192,10 @@ function displetpop_markup() {
 			#displetpop .powered{
 				display: block;
 				position: absolute;
-				bottom: -31px;
+				bottom: -18px;
 				left: 0px;
 				width: 600px;
-				height: 13px;
+				height: 0px;
 				line-height: 12px;
 				text-align: center;
 				font-size: 10px;
@@ -1189,9 +1207,13 @@ function displetpop_markup() {
 				margin-left: 5px;
 				display: inline-block;
 				height: 13px;
+				line-height: 13px;
+				text-indent: -9999px;
 				width: 60px;
 				background: url('<?php echo $imagesdir; ?>/displet.png') 0px 0px no-repeat;
-				text-indent: -9999px;
+			}
+			#displetpop .displet a{
+				display: block;
 			}
 			</style>
 	<?php } ?>
@@ -1236,7 +1258,7 @@ function displetpop_markup() {
 							<div class="close"><a href="javascript:void(0);" title="Close">[close]</a></div>
 						</div><!--// .popupinner -->
 						<div class="powered">
-							Brought to you by <div class="displet">Displet</div>
+							Brought to you by <div class="displet"><a href="http://displet.com/displet-pop" target="_blank">Displet</a></div>
 						</div><!--// .powered -->
 					</div><!--// .popup -->
 				</td>
@@ -1247,6 +1269,7 @@ function displetpop_markup() {
 	
 <?php
 }
+if (!get_option('displetpop_disablemode'))
 add_action('wp_footer', 'displetpop_markup');
 
 function init_sessions() {
@@ -1259,6 +1282,7 @@ function init_sessions() {
 	    $_SESSION['views'] = 1;
 	
 }
+if (!get_option('displetpop_disablemode'))
 add_action('init', 'init_sessions');
 
 function displetpop_action() { ?>
@@ -1287,7 +1311,7 @@ jQuery(document).ready(function($){
 			urlmatch = 'no';
 		}
 	}
-	if ((($.cookie('recentpop') != 'yes' && '<?php echo $_SESSION["views"]; ?>' >= '<?php echo get_option("displetpop_pageviews"); ?>') || '<?php echo get_option("displetpop_testmode"); ?>' == '1') && urlmatch != 'no'){
+	if ((($.cookie('recentpop') != 'yes' && '<?php echo $_SESSION["views"]; ?>' >= '<?php echo get_option("displetpop_pageviews"); ?>') || ('<?php echo get_option("displetpop_testmode"); ?>' == '1' && '<?php echo current_user_can("manage_options"); ?>' == '1')) && urlmatch != 'no'){
 		window.setTimeout(displetPop, <?php echo 1000*get_option('displetpop_seconds'); ?>);	
 	}
 	
@@ -1298,7 +1322,7 @@ jQuery(document).ready(function($){
 <?php
 
 }
-
+if (!get_option('displetpop_disablemode'))
 add_action('wp_head', 'displetpop_action');
 
 ?>

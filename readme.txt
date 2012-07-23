@@ -26,6 +26,9 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.2.1 =
+* Added disable mode.
+
 = 1.2 =
 * New default styles added & URL path option.
 
@@ -39,6 +42,9 @@ Most likely to encourage newsletter registration.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+* Added disable mode.
 
 = 1.2 =
 * New default styles added & URL path option.
