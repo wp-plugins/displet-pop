@@ -26,6 +26,9 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.2.2 =
+* Fixed cookie bug.
+
 = 1.2.1 =
 * Added disable mode.
 
@@ -42,6 +45,9 @@ Most likely to encourage newsletter registration.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.2 =
+* Fixed cookie bug.
 
 = 1.2.1 =
 * Added disable mode.

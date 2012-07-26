@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2.1
+Version: 1.2.2
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -1311,7 +1311,7 @@ jQuery(document).ready(function($){
 			urlmatch = 'no';
 		}
 	}
-	if ((($.cookie('recentpop') != 'yes' && '<?php echo $_SESSION["views"]; ?>' >= '<?php echo get_option("displetpop_pageviews"); ?>') || ('<?php echo get_option("displetpop_testmode"); ?>' == '1' && '<?php echo current_user_can("manage_options"); ?>' == '1')) && urlmatch != 'no'){
+	if ((($.cookie('recentpop', {path:'/'}) != 'yes' && '<?php echo $_SESSION["views"]; ?>' >= '<?php echo get_option("displetpop_pageviews"); ?>') || ('<?php echo get_option("displetpop_testmode"); ?>' == '1' && '<?php echo current_user_can("manage_options"); ?>' == '1')) && urlmatch != 'no'){
 		window.setTimeout(displetPop, <?php echo 1000*get_option('displetpop_seconds'); ?>);	
 	}
 	
