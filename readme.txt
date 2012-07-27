@@ -26,6 +26,9 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.2.3 =
+* Fixed Contact Form 7 misalignment when not using placeholders.
+
 = 1.2.2 =
 * Fixed cookie bug.
 
@@ -45,6 +48,9 @@ Most likely to encourage newsletter registration.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.3 =
+* Fixed Contact Form 7 misalignment when not using placeholders.
 
 = 1.2.2 =
 * Fixed cookie bug.

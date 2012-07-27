@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2.2
+Version: 1.2.3
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -278,6 +278,9 @@ function displetpop_markup() {
 				margin-right: 0px;
 				width: inherit;
 				cursor: pointer;
+			}
+			#displetpop .wpcf7 p{
+				clear: both;
 			}
 			#displetpop .gform_wrapper ul li.gfield, #displetpop .gform_wrapper .gform_footer{
 				clear: none;
