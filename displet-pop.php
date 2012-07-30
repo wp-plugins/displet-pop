@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2.3
+Version: 1.2.4
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -171,10 +171,16 @@ function displetpop_markup() {
 		if ($cur_style==='custom') {echo '<style>' . get_option('displetpop_customstyles') . '</style>';}
 		elseif ($cur_style==='niche') { $imagesdir .= '/niche'; ?>
 			<style>
-			#displetpop *{
+			body #displetpop *{
 				margin:0;
 				padding:0;
 				border:0;
+			}
+			#displetpop{
+				text-align: left;
+			}
+			#displetpop{
+				text-align: left;
 			}
 			#displetpop .popup{
 				width: 488px;
@@ -338,10 +344,13 @@ function displetpop_markup() {
 		<?php }
 		elseif ($cur_style==='general') { $imagesdir .= '/general'; ?>
 			<style>
-			#displetpop *{
+			body #displetpop *{
 				margin:0;
 				padding:0;
 				border:0;
+			}
+			#displetpop{
+				text-align: left;
 			}
 			#displetpop .shadow{
 				background: url('<?php echo $imagesdir; ?>/shadow.png') 0px 0px repeat;
@@ -519,10 +528,13 @@ function displetpop_markup() {
 			<link href='http://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
 			<link href='http://fonts.googleapis.com/css?family=Exo:600,700' rel='stylesheet' type='text/css'>
 			<style>
-			#displetpop *{
+			body #displetpop *{
 				margin:0;
 				padding:0;
 				border:0;
+			}
+			#displetpop{
+				text-align: left;
 			}
 			#displetpop .shadow{
 				background: url('<?php echo $imagesdir; ?>/shadow.png') 0px 0px repeat;
@@ -695,10 +707,13 @@ function displetpop_markup() {
 			<link href='http://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
 			<link href='http://fonts.googleapis.com/css?family=Exo:600,700' rel='stylesheet' type='text/css'>
 			<style>
-			#displetpop *{
+			body #displetpop *{
 				margin:0;
 				padding:0;
 				border:0;
+			}
+			#displetpop{
+				text-align: left;
 			}
 			#displetpop .shadow{
 				background: url('<?php echo $imagesdir; ?>/shadow.png') 0px 0px repeat;
@@ -871,10 +886,13 @@ function displetpop_markup() {
 			<link href='http://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
 			<link href='http://fonts.googleapis.com/css?family=Exo:600,700' rel='stylesheet' type='text/css'>
 			<style>
-			#displetpop *{
+			body #displetpop *{
 				margin:0;
 				padding:0;
 				border:0;
+			}
+			#displetpop{
+				text-align: left;
 			}
 			#displetpop .shadow{
 				background: url('<?php echo $imagesdir; ?>/shadow.png') 0px 0px repeat;
@@ -1045,10 +1063,13 @@ function displetpop_markup() {
 		<?php }
 		else { $imagesdir .= '/default'; ?>
 			<style>
-			#displetpop *{
+			body #displetpop *{
 				margin:0;
 				padding:0;
 				border:0;
+			}
+			#displetpop{
+				text-align: left;
 			}
 			#displetpop .shadow{
 				background: url('<?php echo $imagesdir; ?>/shadow.png') 0px 0px repeat;

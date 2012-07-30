@@ -26,6 +26,9 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.2.4 =
+* Improved default styles to better overcome interfering theme defaults.
+
 = 1.2.3 =
 * Fixed Contact Form 7 misalignment when not using placeholders.
 
@@ -48,6 +51,9 @@ Most likely to encourage newsletter registration.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.4 =
+* Improved default styles to better overcome interfering theme defaults.
 
 = 1.2.3 =
 * Fixed Contact Form 7 misalignment when not using placeholders.
