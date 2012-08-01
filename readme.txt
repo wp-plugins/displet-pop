@@ -26,6 +26,9 @@ Most likely to encourage newsletter registration.
 
 == Changelog ==
 
+= 1.2.5 =
+* Fixed cookie bug.
+
 = 1.2.4 =
 * Improved default styles to better overcome interfering theme defaults.
 
@@ -51,6 +54,9 @@ Most likely to encourage newsletter registration.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.5 =
+* Fixed cookie bug.
 
 = 1.2.4 =
 * Improved default styles to better overcome interfering theme defaults.
