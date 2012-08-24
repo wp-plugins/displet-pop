@@ -3,21 +3,38 @@ Contributors: displetdev
 Tags: pop-up, light window, pop up, popup, delay, email, form, contact form, gravity forms, gravity, gravityforms, real estate
 Requires at least: 2.0.2
 
-Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
+Displet Pop shows a pop-up window on a specified page load after a specified time elapses, prompting visitors to complete a contact form or other action.
 
 == Description ==
 
-Displet Pop shows a pop-up window on a specified page load after a specified time elapses, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering. Integrates with Gravity Forms and other form builders.
+Displet Pop shows a pop-up window on a specified page load after a specified time elapses, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering. Integrates with Gravity Forms and other form builders, and is very effective to encourage newsletter registration or to display a welcome message to your visitors.
+
+Displet Pop comes with a number of options, including:
+
+1) How many seconds to wait before displaying.
+2) On which pageview to display the window to your visitors.
+3) A path to restrict the light window to display on. (Ex. "Only display on pages with /idx/ in the path.")
+4) Four separate areas to add text.
+5) Six pre-designed light window styles or the option to use a custom stylesheet.
 
 == Installation ==
 
-1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Install from the repository and activate the plugin from the Wordpress plugins screen.
+2. Go to Displet Tools > Displet Pop and add your settings.
 
 == Frequently Asked Questions ==
 
+= Why won't this work? =
+
+It does work. Watch the tutorials here. http://displet.com/wordpress-plugins/displet-pop/
+
 = What is this for? =
 
-Most likely to encourage newsletter registration.
+Most likely to encourage newsletter registration or display a welcome message to your visitors.
+
+= Where can I find help on this plugin? =
+
+On the support forum. (Four tabs over from FAQ http://screencast.com/t/J5Iqg3fwy)
 
 == Screenshots ==
 
@@ -25,6 +42,9 @@ Most likely to encourage newsletter registration.
 2. Brimming with robust options.
 
 == Changelog ==
+
+= 1.2.6 =
+* Added disable modes for mobile & tablets.
 
 = 1.2.5 =
 * Fixed cookie bug.

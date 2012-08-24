@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2.5
+Version: 1.2.6
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -44,6 +44,8 @@ function displetpop_settings() {
 		'displetpop_privacy',
 		'displetpop_testmode',
 		'displetpop_disablemode',
+		'displetpop_disable_mobile',
+		'displetpop_disable_tablet',
 		'displetpop_style',
 		'displetpop_customstyles',
 		'displetpop_path',
@@ -116,6 +118,8 @@ function displetpop_options() {
 		<div class="entry">Advanced users: Set cookie to expire after <input name="displetpop_expiration" type="text" id="displetpop_expiration" size="1" value="<?php echo get_option('displetpop_expiration'); ?>"/> days <span>1 day minimum</span></div>
 		<div class="entry">Test mode: <input type="checkbox" id="displetpop_testmode" name="displetpop_testmode" value="1" <?php checked( '1', get_option( 'displetpop_testmode' ) ); ?> /> <span>If checked, the popup will show on <b>every pageview</b> and <b>ignore cookies</b>. URL path settings will still apply. Test mode only applies to users logged in as administrators.</span></div>
 		<div class="entry">Disable mode: <input type="checkbox" id="displetpop_disablemode" name="displetpop_disablemode" value="1" <?php checked( '1', get_option( 'displetpop_disablemode' ) ); ?> /> <span>If checked, the popup will be disabled and will not be visible to anyone - no matter what. Disable mode trumps test mode.</span></div>
+		<div class="entry">Disable Mobile: <input type="checkbox" id="displetpop_disable_mobile" name="displetpop_disable_mobile" value="1" <?php checked( '1', get_option( 'displetpop_disable_mobile' ) ); ?> /> <span>If checked, the popup will be disabled for mobile phones.</span></div>
+		<div class="entry">Disable Tablet: <input type="checkbox" id="displetpop_disable_tablet" name="displetpop_disable_tablet" value="1" <?php checked( '1', get_option( 'displetpop_disable_tablet' ) ); ?> /> <span>If checked, the popup will be disabled for tablet devices.</span></div>
 	</table>
 </fieldset>
 <fieldset>
@@ -1293,8 +1297,22 @@ function displetpop_markup() {
 	
 <?php
 }
-if (!get_option('displetpop_disablemode'))
-add_action('wp_footer', 'displetpop_markup');
+
+include('Mobile_Detect.php');
+$detect = new Mobile_Detect();
+if (!get_option('displetpop_disablemode')){
+	if ($detect->isTablet()) {
+		if (!get_option('displetpop_disable_tablet')) {
+			add_action('wp_footer', 'displetpop_markup');
+		}
+	}
+	elseif (get_option('displetpop_disable_mobile') && $detect->isMobile()) {
+	}
+	else {
+		add_action('wp_footer', 'displetpop_markup');
+	}
+}
+
 
 function init_sessions() {
     if (!session_id()) {
