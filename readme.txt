@@ -34,7 +34,7 @@ Most likely to encourage newsletter registration or display a welcome message to
 
 = Where can I find help on this plugin? =
 
-On the support forum. (Four tabs over from FAQ http://screencast.com/t/J5Iqg3fwy)
+On the support forum at http://wordpress.org/support/plugin/displet-pop.
 
 == Screenshots ==
 
