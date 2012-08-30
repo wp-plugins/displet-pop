@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2.6
+Version: 1.2.7
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -106,6 +106,8 @@ function displetpop_options() {
 .wrap fieldset .entry{margin-top:10px; margin-bottom: 5px;}
 .wrap fieldset .fieldleft{display: inline-block; width: 100px; text-align: right; vertical-align:top; margin: 3px 5px 0px 0px;}
 .wrap fieldset .marleft{margin-left: 105px; margin-top: -5px;}
+.wrap fieldset .marleft.radio{margin-top: 15px; float: left; width: 350px;}
+.wrap fieldset .marleft.radio img{margin-top: 5px; display: block; width:350px;}
 .wrap fieldset input{margin-bottom: 4px;}
 .wrap fieldset textarea{margin-bottom: 0px;}
 .wrap fieldset textarea{width: 300px; height: 80px;}
@@ -132,20 +134,36 @@ function displetpop_options() {
 	</table>
 </fieldset>
 <fieldset>
-	<legend>Styles:</legend>
+	<legend>Styles: <span>Want contact forms just like ours? We use the Gravity Forms &amp; Gravity Forms Auto Placeholders plugins</span></legend>
 	<table class="form-table">
 		<div class="entry"><div class="fieldleft">Color Scheme</div>
-		<select name="displetpop_style" id="displetpop_style">
-			<?php $saved_value=get_option('displetpop_style'); $is_selected = ' selected="selected"'; ?>
-			<option value="<?php $value='default'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>Default</option>
-			<option value="<?php $value='niche'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>Niche</option>
-			<option value="<?php $value='general'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>General</option>
-			<option value="<?php $value='red'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>Red</option>
-			<option value="<?php $value='blue'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>Blue</option>
-			<option value="<?php $value='green'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>Green</option>
-			<option value="<?php $value='custom'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>>Custom</option>
-	    </select></div>
-		<div class="entry"><div class="fieldleft">Custom Stylesheet</div><textarea name="displetpop_customstyles" type="text" id="displetpop_customstyles"><?php echo get_option('displetpop_customstyles'); ?></textarea><div class="marleft"><span>Select &quot;Custom&quot; Color Scheme above to enable usage</span></div></div>
+			<?php $saved_value=get_option('displetpop_style'); $is_selected = ' checked="yes"'; $imgdir = plugins_url('displet-pop/images/examples/'); ?>
+			<div class="marleft" style="margin-top:-15px;">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='custom'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> Custom Stylesheet
+				<div>
+					<textarea name="displetpop_customstyles" type="text" id="displetpop_customstyles"><?php echo get_option('displetpop_customstyles'); ?></textarea>
+				</div>
+			</div><!--// .marleft -->
+			<div class="marleft radio">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='default'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> Default <img src="<?php echo $imgdir . 'default.png'; ?>" />
+			</div><!--// .marleft -->
+			<div class="marleft radio">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='niche'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> Niche <img src="<?php echo $imgdir . 'niche.png'; ?>" />
+			</div><!--// .marleft -->
+			<div class="marleft radio">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='general'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> General <img src="<?php echo $imgdir . 'general.png'; ?>" />
+			</div><!--// .marleft -->
+			<div class="marleft radio">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='red'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> Red <img src="<?php echo $imgdir . 'red.png'; ?>" />
+			</div><!--// .marleft -->
+			<div class="marleft radio">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='blue'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> Blue <img src="<?php echo $imgdir . 'blue.png'; ?>" />
+			</div><!--// .marleft -->
+			<div class="marleft radio">
+				<input type="radio" name="displetpop_style" id="displetpop_style" value="<?php $value='green'; echo $value; ?>"<?php if ($value==$saved_value) echo $is_selected; ?>> Green <img src="<?php echo $imgdir . 'green.png'; ?>" />
+			</div><!--// .marleft -->
+			<div style="clear:both;"><!-- --></div>
+		</div>
 	</table>
 </fieldset>
 <p class="submit">
@@ -1298,8 +1316,8 @@ function displetpop_markup() {
 <?php
 }
 
-include('Mobile_Detect.php');
-$detect = new Mobile_Detect();
+include('displetpop_mobile_detect.php');
+$detect = new displetpop_mobile_detect();
 if (!get_option('displetpop_disablemode')){
 	if ($detect->isTablet()) {
 		if (!get_option('displetpop_disable_tablet')) {

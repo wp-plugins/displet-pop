@@ -1,22 +1,22 @@
 <?php
 /**
  * Mobile Detect
- * $Id: Mobile_Detect.php 51 2012-08-03 02:16:06Z serbanghita@gmail.com $
+ * $Id: displetpop_mobile_detect.php 51 2012-08-03 02:16:06Z serbanghita@gmail.com $
  *
- * @author      Mobile_Detect v.1.0 Victor Stanciu <vic.stanciu@gmail.com>
- *              Mobile_Detect v.2.x Serban Ghita <serban.ghita@gmail.com>
+ * @author      displetpop_mobile_detect v.1.0 Victor Stanciu <vic.stanciu@gmail.com>
+ *              displetpop_mobile_detect v.2.x Serban Ghita <serban.ghita@gmail.com>
  * 
- * @usage      require_once 'Mobile_Detect.php';
- *             $detect = new Mobile_Detect();
+ * @usage      require_once 'displetpop_mobile_detect.php';
+ *             $detect = new displetpop_mobile_detect();
  *             $detect->isMobile() or $detect->isTablet()
  * 
  *             For more specific usage see the documentation navigate to:
- *             http://code.google.com/p/php-mobile-detect/wiki/Mobile_Detect
+ *             http://code.google.com/p/php-mobile-detect/wiki/displetpop_mobile_detect
  * 
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
-class Mobile_Detect {
+class displetpop_mobile_detect {
 
     // External info.
     protected $userAgent = null;
