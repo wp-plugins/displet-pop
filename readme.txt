@@ -1,6 +1,6 @@
 === Displet Pop ===
 Contributors: displetdev
-Tags: pop-up, light window, pop up, popup, delay, email, form, contact form, gravity forms, gravity, gravityforms, real estate, domination, popup domination, pop-up domination
+Tags: pop-up, light window, pop up, popup, delay, email, form, contact form, gravity forms, gravity, gravityforms, real estate, domination
 Requires at least: 2.0.2
 
 Displet Pop shows a pop-up window on a specified page load after a specified time elapses, prompting visitors to complete a contact form or other action.
