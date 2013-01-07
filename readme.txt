@@ -54,6 +54,9 @@ On the support forum at http://wordpress.org/support/plugin/displet-pop.
 
 == Changelog ==
 
+= 1.2.8 =
+* Merged forced registration for Gravity Forms (compliments Rion Dooley) & Contact Forms 7. Added option for multiple URL paths.
+
 = 1.2.7 =
 * Changed Mobile_Detect class name to reduce possibility of conflict, added previews of styles to options page.
 
@@ -88,6 +91,9 @@ On the support forum at http://wordpress.org/support/plugin/displet-pop.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.8 =
+* Merged forced registration for Gravity Forms (compliments Rion Dooley) & Contact Forms 7. Added option for multiple URL paths.
 
 = 1.2.7 =
 * Changed Mobile_Detect class name to reduce possibility of conflict, added previews of styles to options page.
