@@ -125,7 +125,7 @@ function displetpop_options() {
 		<div class="entry">Disable mode: <input type="checkbox" id="displetpop_disablemode" name="displetpop_disablemode" value="1" <?php checked( '1', get_option( 'displetpop_disablemode' ) ); ?> /> <span>If checked, the popup will be disabled and will not be visible to anyone - no matter what. Disable mode trumps test mode.</span></div>
 		<div class="entry">Disable Mobile: <input type="checkbox" id="displetpop_disable_mobile" name="displetpop_disable_mobile" value="1" <?php checked( '1', get_option( 'displetpop_disable_mobile' ) ); ?> /> <span>If checked, the popup will be disabled for mobile phones.</span></div>
 		<div class="entry">Disable Tablet: <input type="checkbox" id="displetpop_disable_tablet" name="displetpop_disable_tablet" value="1" <?php checked( '1', get_option( 'displetpop_disable_tablet' ) ); ?> /> <span>If checked, the popup will be disabled for tablet devices.</span></div>
-		<div class="entry">Force submit: <input type="checkbox" id="displetpop_force_submit" name="displetpop_force_submit" value="1" <?php checked( '1', get_option( 'displetpop_force_submit' ) ); ?> /> <span>If checked, the popup will only disappear if the form is submitted.</span></div>
+		<div class="entry">Force submit: <input type="checkbox" id="displetpop_force_submit" name="displetpop_force_submit" value="1" <?php checked( '1', get_option( 'displetpop_force_submit' ) ); ?> /> <span>Only applies to forms from Gravity Forms or Contact Form 7. If checked, the popup will only disappear if the form is submitted.</span></div>
 	</table>
 </fieldset>
 <fieldset>
