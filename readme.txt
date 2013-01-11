@@ -1,6 +1,6 @@
 === Displet Pop ===
 Contributors: displetdev
-Tags: pop-up, light window, pop up, popup, delay, email, form, contact form, gravity forms, gravity, gravityforms, real estate, popup domination, domination, pop-up domination
+Tags: pop-up, light window, pop up, popup, delay, email, form, contact form, gravity forms, gravity, gravityforms, real estate, domination
 Requires at least: 2.0.2
 
 Displet Pop shows a pop-up window on a specified page load after a specified time elapses, prompting visitors to complete a contact form or other action.
@@ -54,6 +54,9 @@ On the support forum at http://wordpress.org/support/plugin/displet-pop.
 
 == Changelog ==
 
+= 1.2.8 =
+* Merged forced registration for Gravity Forms (compliments Rion Dooley) & Contact Forms 7. Added option for multiple URL paths.
+
 = 1.2.7 =
 * Changed Mobile_Detect class name to reduce possibility of conflict, added previews of styles to options page.
 
@@ -88,6 +91,9 @@ On the support forum at http://wordpress.org/support/plugin/displet-pop.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.8 =
+* Merged forced registration for Gravity Forms (compliments Rion Dooley) & Contact Forms 7. Added option for multiple URL paths.
 
 = 1.2.7 =
 * Changed Mobile_Detect class name to reduce possibility of conflict, added previews of styles to options page.
