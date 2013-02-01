@@ -54,6 +54,9 @@ On the support forum at http://wordpress.org/support/plugin/displet-pop.
 
 == Changelog ==
 
+= 1.2.9 =
+* Added Homepage option to URL paths.
+
 = 1.2.8 =
 * Merged forced registration for Gravity Forms (compliments Rion Dooley) & added Contact Forms 7. Added option for multiple URL paths.
 
@@ -91,6 +94,9 @@ On the support forum at http://wordpress.org/support/plugin/displet-pop.
 * Created.
 
 == Upgrade Notice ==
+
+= 1.2.9 =
+* Added Homepage option to URL paths.
 
 = 1.2.8 =
 * Merged forced registration for Gravity Forms (compliments Rion Dooley) & added Contact Forms 7. Added option for multiple URL paths.

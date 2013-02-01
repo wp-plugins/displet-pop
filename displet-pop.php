@@ -3,7 +3,7 @@
 Plugin Name: Displet Pop
 Plugin URI: http://displet.com/displet-pop
 Description: Displet Pop shows a pop-up window 30 seconds after the page loads, prompting visitors to complete a contact form or other action. Uses a week long cookie to avoid over-pestering.
-Version: 1.2.8.4
+Version: 1.2.9
 Author: Displet
 Author URI: http://displet.com/
 */
@@ -48,6 +48,7 @@ function displetpop_settings() {
 		'displetpop_disable_tablet',
 		'displetpop_style',
 		'displetpop_customstyles',
+		'displetpop_homepage_path',
 		'displetpop_path',
 		'displetpop_path2',
 		'displetpop_path3',
@@ -119,7 +120,7 @@ function displetpop_options() {
 <fieldset>
 	<legend>Settings:</legend>
 		<div class="entry">Show popup after <input name="displetpop_seconds" type="text" id="displetpop_seconds" size="1" value="<?php echo get_option('displetpop_seconds'); ?>"/> second(s) after visiting at least <input name="displetpop_pageviews" type="text" id="displetpop_pageviews" size="1" value="<?php echo get_option('displetpop_pageviews'); ?>"/> pages sitewide <span>Will only show once until cookie expires</span></div>
-		<div class="entry">Show popup only on pages containing URL path: <input name="displetpop_path" type="text" id="displetpop_path" size="5" value="<?php echo get_option('displetpop_path'); ?>"/> and/or <input name="displetpop_path2" type="text" id="displetpop_path2" size="5" value="<?php echo get_option('displetpop_path2'); ?>"/> and/or <input name="displetpop_path3" type="text" id="displetpop_path3" size="5" value="<?php echo get_option('displetpop_path3'); ?>"/> <span>Leave blank to apply to all pages & posts</span></div>
+		<div class="entry">Show popup only on: <input type="checkbox" id="displetpop_homepage_path" name="displetpop_homepage_path" value="1" <?php checked( '1', get_option( 'displetpop_homepage_path' ) ); ?> /> Homepage and/or pages containing URL path <input name="displetpop_path" type="text" id="displetpop_path" size="5" value="<?php echo get_option('displetpop_path'); ?>"/> and/or <input name="displetpop_path2" type="text" id="displetpop_path2" size="5" value="<?php echo get_option('displetpop_path2'); ?>"/> and/or <input name="displetpop_path3" type="text" id="displetpop_path3" size="5" value="<?php echo get_option('displetpop_path3'); ?>"/> <span>Leave blank to apply to all pages & posts</span></div>
 		<div class="entry">Advanced users: Set cookie to expire after <input name="displetpop_expiration" type="text" id="displetpop_expiration" size="1" value="<?php echo get_option('displetpop_expiration'); ?>"/> days <span>1 day minimum</span></div>
 		<div class="entry">Test mode: <input type="checkbox" id="displetpop_testmode" name="displetpop_testmode" value="1" <?php checked( '1', get_option( 'displetpop_testmode' ) ); ?> /> <span>If checked, the popup will show on <b>every pageview</b> and <b>ignore cookies</b>. URL path settings will still apply. Test mode only applies to users logged in as administrators.</span></div>
 		<div class="entry">Disable mode: <input type="checkbox" id="displetpop_disablemode" name="displetpop_disablemode" value="1" <?php checked( '1', get_option( 'displetpop_disablemode' ) ); ?> /> <span>If checked, the popup will be disabled and will not be visible to anyone - no matter what. Disable mode trumps test mode.</span></div>
@@ -1338,7 +1339,7 @@ if (!get_option('displetpop_disablemode')){
 }
 
 
-function init_sessions() {
+function displetpop_init_sessions() {
     if (!session_id()) {
         session_start();
     }  
@@ -1349,7 +1350,7 @@ function init_sessions() {
 	
 }
 if (!get_option('displetpop_disablemode'))
-add_action('init', 'init_sessions');
+add_action('init', 'displetpop_init_sessions');
 
 function displetpop_action() { ?>
 
@@ -1364,7 +1365,7 @@ jQuery(document).ready(function($){
 		});
 	<?php else: ?>
 		$('#displetpop input[type="submit"]').click(function(){
-			checkSubmissionSuccess(1);
+			displetpopCheckSubmissionSuccess(1);
 		});
 	<?php endif; ?>
 	function displetPop(){
@@ -1376,14 +1377,20 @@ jQuery(document).ready(function($){
 	$(document).bind('gform_confirmation_loaded', function(){
     	setTimeout(hideDispletPop,2000);
 	});
+	var displetpoppathhome = '<?php echo get_option('displetpop_homepage_path'); ?>';
 	var displetpoppath1 = '<?php echo get_option('displetpop_path'); ?>';
 	var displetpoppath2 = '<?php echo get_option('displetpop_path2'); ?>';
 	var displetpoppath3 = '<?php echo get_option('displetpop_path3'); ?>';
-	if (displetpoppath1 != '' || displetpoppath2 != '' || displetpoppath3 != '') {
+	if (displetpoppathhome == '1' || displetpoppath1 != '' || displetpoppath2 != '' || displetpoppath3 != '') {
 		var urlmatch = 'no';
 	}
 	else{
 		var urlmatch = 'yes';
+	}
+	if (displetpoppathhome=='1'){
+		if('<?php echo is_front_page(); ?>' == '1') {
+			urlmatch = 'yes';
+		}
 	}
 	if (displetpoppath1!=''){
 		if(window.location.href.indexOf(displetpoppath1) > -1) {
@@ -1410,7 +1417,7 @@ function hideDispletPop() {
 	jQuery('#displetpop').hide();
 	jQuery('body').removeClass('displetpop');
 }
-function checkSubmissionSuccess(i){
+function displetpopCheckSubmissionSuccess(i){
 	// CF7 confirmation
     if (jQuery('#displetpop .wpcf7-response-output').hasClass('wpcf7-mail-sent-ok')) {
     	setTimeout(hideDispletPop,2000);
@@ -1418,7 +1425,7 @@ function checkSubmissionSuccess(i){
     else if (i < 10){
 		setTimeout(function(){
 			i++;
-			checkSubmissionSuccess(i);
+			displetpopCheckSubmissionSuccess(i);
 		},2000);	
     }
 }
