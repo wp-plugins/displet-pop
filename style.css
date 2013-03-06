@@ -1,0 +1,57 @@
+body.displetpop{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+#displetpop{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:99111;
+	width:100%;
+	height:100%;
+}
+
+#displetpop .shadow{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:99109;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+
+#displetpop table.inner, #displetpop table.inner td{
+	width: 100%;
+	height: 100%;
+}
+
+#displetpop table.inner td{
+	vertical-align: middle;
+}
+
+#displetpop .popup{
+	margin: auto;
+	position:relative;
+	z-index:99110;
+	background-color: #fff;
+}
+
+#displetpop .clear{
+	clear: both;
+}
+
+#displetpop .powered{
+	display: none;
+	height: 0px;
+}
+
+#displetpop .special-cookie{
+	min-height: 1px;
+}
